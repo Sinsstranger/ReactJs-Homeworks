@@ -1,0 +1,18 @@
+{
+	"extends": ["prettier"],
+  "plugins": ["prettier"],
+	"printWidth": 80,
+	"tabWidth": 2,
+	"useTabs": true,
+	"semi": true,
+	"singleQuote": true,
+	"trailingComma": "all",
+	"bracketSpacing": true,
+	"jsxBracketSameLine": true,
+	"arrowParens": "always",
+	"requirePragma": false,
+	"insertPragma": false,
+	"proseWrap": "always",
+	"singleAttributePerLine": true,
+	"bracketSameLine": true
+}
