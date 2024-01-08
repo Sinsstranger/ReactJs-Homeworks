@@ -771,4 +771,5 @@ FodyWeavers.xsd
 *.sig
 
 pkg/
-src/
+#src/
+vite.config.js
