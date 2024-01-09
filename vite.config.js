@@ -16,8 +16,9 @@ export default defineConfig({
 		alias: {
 			// Псевдонимы для удобства импорта
 			"@components": resolve(__dirname, "src/components"),
-			"@utils": resolve(__dirname, "src/utils"),
+			"@helpers": resolve(__dirname, "src/helpers"),
 			"@slices": resolve(__dirname, "src/slices"),
+			"@css": resolve(__dirname, "src/css"),
 		},
 	},
 	plugins: [react()],

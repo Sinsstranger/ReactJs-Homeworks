@@ -11,3 +11,10 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 		</RouterProvider>
 	</React.StrictMode>,
 );
+if (import.meta.hot) {
+	import.meta.hot.accept((newModule) => {
+		if (newModule) {
+			// newModule is undefined when SyntaxError happened
+		}
+	})
+}
