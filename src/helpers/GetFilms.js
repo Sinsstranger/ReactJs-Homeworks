@@ -6,6 +6,8 @@ const getFilms = async () => {
 			import.meta.env.VITE_API_KEY
 		}&language=ru&page=1`,
 	);
-	return filmsRaw.json();
+	const result = await filmsRaw.json();
+	console.log(result);
+	return result;
 };
 export default getFilms;
