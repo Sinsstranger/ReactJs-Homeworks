@@ -8,14 +8,19 @@ function App() {
 	const [film, setFilm] = useState(null);
 	const [isLoading, toogleLoading] = useState(true);
 	const getFilm = async () => {
-		if (!isLoading) {
-			toogleLoading(!isLoading);
+		toogleLoading(true);
+		try {
+			const films = await getFilms();
+			const oneMovie =
+				films.results[getRandomInteger(0, films.results.length - 1)];
+			setFilm(oneMovie);
+		} catch (error) {
+			console.log(error);
+		} finally {
+			setTimeout(() => {
+				toogleLoading(false);
+			}, 500);
 		}
-		const films = await getFilms();
-		const oneMovie =
-			films.results[getRandomInteger(0, films.results.length - 1)];
-		setFilm(oneMovie);
-		setTimeout(() => toogleLoading(!isLoading), 1000);
 	};
 	useEffect(() => {
 		getFilm();
