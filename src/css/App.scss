@@ -5,6 +5,15 @@
 #root {
   max-width: 90vw;
 }
-.change-film{
+
+.change-film {
   display: block;
+}
+
+.films-list {
+  &__item{
+    border: 1px solid moccasin;
+    padding: 1em;
+    margin: 1em;
+  }
 }
