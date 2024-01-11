@@ -5,9 +5,9 @@ import PropTypes from 'prop-types';
 function FilmsList({ filmsList = [] }) {
 	return (
 		<div className="films-list">
-			{filmsList.map((film, idx) => (
+			{filmsList.map((film) => (
 				<Film
-					key={`${idx + 1}`}
+					key={`${film.id}`}
 					title={film.title}
 					overview={film.overview}
 					releaseDate={film.release_date}
@@ -24,6 +24,7 @@ FilmsList.defaultProps = {
 FilmsList.propTypes = {
 	filmsList: PropTypes.arrayOf(
 		PropTypes.shape({
+			id: PropTypes.number.isRequired,
 			title: PropTypes.string.isRequired,
 			overview: PropTypes.string.isRequired,
 			releaseDate: PropTypes.string.isRequired,
