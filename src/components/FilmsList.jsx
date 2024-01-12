@@ -1,4 +1,3 @@
-import React from 'react';
 import Film from '@components/Film.jsx';
 import PropTypes from 'prop-types';
 
@@ -25,9 +24,10 @@ FilmsList.propTypes = {
 	filmsList: PropTypes.arrayOf(
 		PropTypes.shape({
 			id: PropTypes.number.isRequired,
-			title: PropTypes.string.isRequired,
+			title: PropTypes.string,
+			name: PropTypes.string,
 			overview: PropTypes.string.isRequired,
-			releaseDate: PropTypes.string.isRequired,
+			releaseDate: PropTypes.string,
 		}),
 	),
 };
