@@ -8,9 +8,9 @@ function FilmsList({ filmsList = [] }) {
 			{filmsList.map((film) => (
 				<Film
 					key={`${film.id}`}
-					title={film.title}
+					title={film.title || film.name}
 					overview={film.overview}
-					releaseDate={film.release_date}
+					releaseDate={film.release_date || null}
 				/>
 			))}
 		</div>

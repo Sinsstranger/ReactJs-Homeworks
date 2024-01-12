@@ -5,9 +5,13 @@ const filmDetail = ({ title, overview, releaseDate }) => {
 		<div className="film-card films-list__item">
 			<p className="film-title">{title}</p>
 			<p className="film-caption">{overview}</p>
-			<p>
-				Релиз: <span>{releaseDate}</span>
-			</p>
+			{releaseDate ? (
+				<p>
+					Релиз: <span>{releaseDate}</span>
+				</p>
+			) : (
+				releaseDate
+			)}
 		</div>
 	);
 };
