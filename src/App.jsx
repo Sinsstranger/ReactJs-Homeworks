@@ -4,6 +4,7 @@ import { Tabs, Tab } from 'react-bootstrap';
 import FilmsList from '@components/FilmsList.jsx';
 import LanguageContext, { supportedLanguages } from '@context/Lang.js';
 import '@css/App.scss';
+import LangSweatcher from '@components/LangSweatcher';
 
 function App() {
 	const [films, setFilms] = useState(null);
@@ -43,12 +44,8 @@ function App() {
 		mount();
 	}, [lang]);
 	return (
-		<LanguageContext.Provider value={lang}>
-			<button
-				type="button"
-				onClick={toggleLang}>
-				{lang}
-			</button>
+		<LanguageContext.Provider value={[lang, toggleLang]}>
+			<LangSweatcher />
 			<div className="films-list">
 				{isLoading ? (
 					'Идет загрузка'
