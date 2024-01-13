@@ -58,13 +58,13 @@ function App() {
 							eventKey="tab1"
 							title="Фильмы">
 							{/* Содержимое первой вкладки */}
-							<FilmsList filmsList={films.results} />
+							{key === 'tab1' && <FilmsList filmsList={films.results} />}
 						</Tab>
 						<Tab
 							eventKey="tab2"
 							title="Сериалы">
 							{/* Содержимое второй вкладки */}
-							<FilmsList filmsList={serials.results} />
+							{key === 'tab2' && <FilmsList filmsList={serials.results} />}
 						</Tab>
 					</Tabs>
 				)}
