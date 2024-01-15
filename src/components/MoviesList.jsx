@@ -12,6 +12,7 @@ function MoviesList({ isSerials }) {
 	const [moviesList, setMoviesList] = useState([]);
 	const [demoMovie, setDemoMovie] = useState({});
 	let changeBannerMovie = null;
+
 	useEffect(() => {
 		if (!isLoading && !moviesList.length) {
 			toggleLoading(true);
@@ -19,21 +20,28 @@ function MoviesList({ isSerials }) {
 		const mountMoviesList = async () => {
 			const moviesData = await getMovies(isSerials, lang);
 			setMoviesList(moviesData.results);
-			setDemoMovie(
-				moviesData.results[getRandomInteger(0, moviesData.results.length)],
-			);
+			// setDemoMovie(
+			// 	moviesData.results[getRandomInteger(0, moviesData.results.length)],
+			// );
 		};
 		mountMoviesList();
 	}, [lang]);
+
 	useEffect(() => {
 		changeBannerMovie = setInterval(() => {
-			setDemoMovie(() => moviesList[getRandomInteger(0, moviesList.length)]);
-		}, 3000);
+			if (!moviesList.length) {
+				return;
+			}
+
+			setDemoMovie(moviesList[getRandomInteger(0, moviesList.length)]);
+		}, 2000);
+
 		if (isLoading) {
 			toggleLoading(false);
 		}
 		return () => clearInterval(changeBannerMovie);
-	}, [demoMovie]);
+	}, [moviesList]);
+
 	if (isLoading) {
 		return 'Идет загрузка';
 	}
