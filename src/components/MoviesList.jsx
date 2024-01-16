@@ -5,6 +5,7 @@ import LanguageContext from '@context/Lang.js';
 import getMovies from '@helpers/GetMovies.js';
 import getRandomInteger from '@helpers/GetRandomInteger.js';
 import BannerMovie from '@components/BannerMovie.jsx';
+import { Container } from 'react-bootstrap';
 
 function MoviesList({ isSerials }) {
 	const [lang] = useContext(LanguageContext);
@@ -20,9 +21,6 @@ function MoviesList({ isSerials }) {
 		const mountMoviesList = async () => {
 			const moviesData = await getMovies(isSerials, lang);
 			setMoviesList(moviesData.results);
-			// setDemoMovie(
-			// 	moviesData.results[getRandomInteger(0, moviesData.results.length)],
-			// );
 		};
 		mountMoviesList();
 	}, [lang]);
@@ -48,11 +46,13 @@ function MoviesList({ isSerials }) {
 	return (
 		<>
 			{demoMovie && (
-				<BannerMovie
-					title={demoMovie?.title || demoMovie?.name}
-					overview={demoMovie?.overview}
-					changeBannerMovie={changeBannerMovie}
-				/>
+				<Container>
+					<BannerMovie
+						title={demoMovie?.title || demoMovie?.name}
+						overview={demoMovie?.overview}
+						changeBannerMovie={changeBannerMovie}
+					/>
+				</Container>
 			)}
 			<div className="films-list">
 				{moviesList.map((film) => (

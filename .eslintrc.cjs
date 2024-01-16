@@ -23,6 +23,8 @@ module.exports = {
 					["@slices", resolve(__dirname, "src/slices")],
 					["@css", resolve(__dirname, "src/css")],
 					["@context", resolve(__dirname, "src/contexts")],
+					["@routes", resolve(__dirname, "src/routes")],
+					["@layouts", resolve(__dirname, "src/layouts")],
 				],
 				extensions: ['.js', '.ts', '.jsx', ".tsx"],
 			},

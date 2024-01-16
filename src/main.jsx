@@ -1,16 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter as RouterProvider } from 'react-router-dom';
-import ErrorBoundary from '@components/ErrorBoundary.jsx';
+import ErrorBoundary from '@components/ErrorBoundary';
 import App from './App';
-import './index.scss';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
 	<ErrorBoundary>
 		<React.StrictMode>
-			<RouterProvider>
-				<App />
-			</RouterProvider>
+			<App />
 		</React.StrictMode>
 	</ErrorBoundary>,
 );

@@ -16,6 +16,12 @@
 			],
 			"@context/*": [
 				"contexts/*"
+			],
+			"@routes/*": [
+				"routes/*"
+			],
+			"@layouts/*": [
+				"layouts/*"
 			]
 		}
 	}
