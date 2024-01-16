@@ -3,8 +3,6 @@ import LanguageContext, { supportedLanguages } from '@context/Lang.js';
 import { RouterProvider } from 'react-router-dom';
 import router from '@routes/Router';
 import '@css/App.scss';
-import Header from '@layouts/Header.jsx';
-import Footer from '@layouts/Footer.jsx';
 
 function App() {
 	// eslint-disable-next-line no-underscore-dangle

@@ -8,28 +8,20 @@ import Footer from '@layouts/Footer.jsx';
 const router = createBrowserRouter([
 	{
 		path: '/',
+		element: <MainPage />,
 		errorElement: <Error />,
 		children: [
-			{ index: true, element: <MainPage /> },
+			{
+				index: true,
+				element: <h1 className="card-title">Главная страница</h1>,
+			},
 			{
 				path: 'movies',
-				element: (
-					<>
-						<Header />
-						<MoviesList />
-						<Footer />
-					</>
-				),
+				element: <MoviesList />,
 			},
 			{
 				path: 'serials',
-				element: (
-					<>
-						<Header />
-						<MoviesList isSerials />
-						<Footer />
-					</>
-				),
+				element: <MoviesList isSerials />,
 			},
 			{ path: '*', element: <Error /> },
 		],
