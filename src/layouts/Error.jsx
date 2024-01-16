@@ -19,7 +19,7 @@ function Error() {
 		ticker = setInterval(() => {
 			setSeconds((prevSeconds) => prevSeconds - 1);
 		}, redirectTime / seconds);
-		return () => clearInterval(ticker) && clearTimeout(timer);
+		return () => clearInterval(ticker) || clearTimeout(timer);
 	}, []);
 	return (
 		<div
