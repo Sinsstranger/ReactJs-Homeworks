@@ -14,11 +14,13 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-#root{
+
+#root {
   display: flex;
   flex-flow: column nowrap;
   padding: 0;
 }
+
 a {
   font-weight: 500;
   color: #646cff;
@@ -81,9 +83,15 @@ button:focus-visible {
 #root, .change-film {
   margin: 0 auto;
 }
-.main{
+
+.main-header {
+  margin-bottom: 1em;
+}
+
+.main {
   flex: 1 0 auto;
 }
+
 .change-film {
   display: block;
 }
@@ -95,6 +103,15 @@ button:focus-visible {
 	 margin: 1em;
   }
 }
-.footer{
+
+.footer {
   padding: 1em;
+}
+
+.eval-form {
+  display: flex;
+  flex-flow: column nowrap;
+  input, textarea{
+    width: 100%;
+  }
 }

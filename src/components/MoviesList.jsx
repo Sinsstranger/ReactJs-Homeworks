@@ -6,6 +6,7 @@ import getMovies from '@helpers/GetMovies.js';
 import getRandomInteger from '@helpers/GetRandomInteger.js';
 import BannerMovie from '@components/BannerMovie.jsx';
 import { Container } from 'react-bootstrap';
+import { Helmet } from 'react-helmet';
 
 function MoviesList({ isSerials }) {
 	const [lang] = useContext(LanguageContext);
@@ -47,6 +48,9 @@ function MoviesList({ isSerials }) {
 		<>
 			{demoMovie && (
 				<Container>
+					<Helmet>
+						<title>{isSerials ? 'Сериалы' : 'Фильмы'}</title>
+					</Helmet>
 					<BannerMovie
 						title={demoMovie?.title || demoMovie?.name}
 						overview={demoMovie?.overview}
