@@ -33,22 +33,21 @@ function EvaluationPage() {
 			nameRef.current.focus();
 		}
 	}, [isShowResult]);
-	const checkReadyToSend = () => {
-		setIsNotReadyToSend(
-			() =>
-				!(
-					nameRef.current.value.trim().length !== 0 &&
-					commentRef.current.value.trim().length !== 0
-				),
-		);
-	};
+	useEffect(() => {
+		if (
+			dataState.name.trim().length !== 0 &&
+			dataState.comment.trim().length !== 0
+		) {
+			return setIsNotReadyToSend(false);
+		}
+		return setIsNotReadyToSend(true);
+	}, [dataState]);
 
 	const nameInputHandler = (e) => {
 		setDataState((prevState) => ({
 			...prevState,
 			name: e.target.value,
 		}));
-		checkReadyToSend();
 	};
 	const evalSelectHandler = (e) => {
 		setDataState((prevState) => ({
@@ -61,7 +60,6 @@ function EvaluationPage() {
 			...prevState,
 			comment: e.target.value,
 		}));
-		checkReadyToSend();
 	};
 	const handleSubmit = (e) => {
 		e.preventDefault();
