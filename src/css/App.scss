@@ -114,4 +114,7 @@ button:focus-visible {
   input, textarea{
     width: 100%;
   }
+  input, textarea, select{
+    margin-bottom: 1em;
+  }
 }

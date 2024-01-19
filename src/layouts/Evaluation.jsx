@@ -3,7 +3,8 @@ import Header from '@layouts/Header.jsx';
 import Footer from '@layouts/Footer.jsx';
 import { Outlet } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
-import { useMemo, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import EvalStat from '@components/EvalStat.jsx';
 
 const defaultEval = 5;
 const initialFormState = {
@@ -27,61 +28,55 @@ function EvaluationPage() {
 	const nameRef = useRef();
 	const evalRef = useRef();
 	const commentRef = useRef();
-
+	useEffect(() => {
+		if (nameRef?.current) {
+			nameRef.current.focus();
+		}
+	}, [isShowResult]);
 	const checkReadyToSend = () => {
 		setIsNotReadyToSend(
 			!(
-				nameRef.current.value.trim().length !== 0 &&
-				commentRef.current.value.trim().length !== 0
+				dataState.name.trim().length !== 0 &&
+				dataState.comment.trim().length !== 0
 			),
 		);
 	};
 
-	const nameInputHandler = () => {
+	const nameInputHandler = (e) => {
 		setDataState((prevState) => ({
 			...prevState,
-			name: nameRef.current.value,
+			name: e.target.value,
 		}));
 		checkReadyToSend();
 	};
-	const evalSelectHandler = () => {
+	const evalSelectHandler = (e) => {
 		setDataState((prevState) => ({
 			...prevState,
-			evaluation: evalRef.current.value,
+			evaluation: e.target.value,
 		}));
 	};
-	const commentInputHandler = () => {
+	const commentInputHandler = (e) => {
 		setDataState((prevState) => ({
 			...prevState,
-			comment: commentRef.current.value,
+			comment: e.target.value,
 		}));
 		checkReadyToSend();
 	};
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		setIsShowResult(true);
-		nameRef.current.focus();
 	};
 	if (isShowResult) {
 		return (
 			<>
 				{pageHead}
-				<main className="main">
-					<Container>
-						<p>Имя пользователя: {dataState.name}</p>
-						<p>Оценка: {dataState.evaluation}</p>
-						<p>Комментарий: {dataState.comment}</p>
-						<button
-							type="button"
-							onClick={() => {
-								setDataState(initialFormState);
-								setIsShowResult(false);
-								setIsNotReadyToSend(true);
-							}}>
-							Оценить еще раз
-						</button>
-					</Container>
-				</main>
+				<EvalStat
+					dataState={dataState}
+					setDataState={setDataState}
+					setIsShowResult={setIsShowResult}
+					initialFormState={initialFormState}
+					setIsNotReadyToSend={setIsNotReadyToSend}
+				/>
 			</>
 		);
 	}
