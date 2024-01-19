@@ -1,12 +1,6 @@
 import { Container } from 'react-bootstrap';
 
-function EvalStat({
-	dataState,
-	initialFormState,
-	setDataState,
-	setIsShowResult,
-	setIsNotReadyToSend,
-}) {
+function EvalStat({ dataState, reEvalHandler }) {
 	return (
 		<main className="main">
 			<Container>
@@ -15,10 +9,8 @@ function EvalStat({
 				<p>Комментарий: {dataState.comment}</p>
 				<button
 					type="button"
-					onClick={() => {
-						setDataState(initialFormState);
-						setIsShowResult(false);
-						setIsNotReadyToSend(true);
+					onClick={(e) => {
+						reEvalHandler(e);
 					}}>
 					Оценить еще раз
 				</button>

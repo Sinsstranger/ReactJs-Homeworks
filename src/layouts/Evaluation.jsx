@@ -35,10 +35,11 @@ function EvaluationPage() {
 	}, [isShowResult]);
 	const checkReadyToSend = () => {
 		setIsNotReadyToSend(
-			!(
-				dataState.name.trim().length !== 0 &&
-				dataState.comment.trim().length !== 0
-			),
+			() =>
+				!(
+					nameRef.current.value.trim().length !== 0 &&
+					commentRef.current.value.trim().length !== 0
+				),
 		);
 	};
 
@@ -66,16 +67,18 @@ function EvaluationPage() {
 		e.preventDefault();
 		setIsShowResult(true);
 	};
+	const reEvalHandler = (e) => {
+		setDataState(initialFormState);
+		setIsShowResult(false);
+		setIsNotReadyToSend(true);
+	};
 	if (isShowResult) {
 		return (
 			<>
 				{pageHead}
 				<EvalStat
+					reEvalHandler={reEvalHandler}
 					dataState={dataState}
-					setDataState={setDataState}
-					setIsShowResult={setIsShowResult}
-					initialFormState={initialFormState}
-					setIsNotReadyToSend={setIsNotReadyToSend}
 				/>
 			</>
 		);
