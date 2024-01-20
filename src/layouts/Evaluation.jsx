@@ -100,10 +100,7 @@ function EvaluationPage() {
 						<label htmlFor="name">
 							Имя:&nbsp;
 							<input
-								{
-									/* eslint-disable-next-line react/jsx-props-no-spreading */
-									...nameInput
-								}
+								{...nameInput}
 								ref={nameRef}
 							/>
 							{nameInput.error}

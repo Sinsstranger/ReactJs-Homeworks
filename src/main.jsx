@@ -1,10 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import ErrorBoundary from '@components/ErrorBoundary';
+import Error500 from '@layouts/Error_500.jsx';
 import App from './App';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-	<ErrorBoundary>
+	<ErrorBoundary fallback={<Error500 />}>
 		<React.StrictMode>
 			<App />
 		</React.StrictMode>

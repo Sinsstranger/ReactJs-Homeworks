@@ -42,5 +42,6 @@ module.exports = {
 		],
 		"react/jsx-uses-react": "error",
 		"react/jsx-uses-vars": "error",
+		"react/jsx-props-no-spreading": "off",
 	},
 }

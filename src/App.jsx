@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 import LanguageContext, { supportedLanguages } from '@context/Lang.js';
 import { RouterProvider } from 'react-router-dom';
 import router from '@routes/Router';
@@ -19,7 +19,7 @@ function App() {
 	}, [lang]);
 
 	return (
-		<LanguageContext.Provider value={[lang, toggleLang]}>
+		<LanguageContext.Provider value={useMemo(() => [lang, toggleLang], [lang])}>
 			<RouterProvider router={router} />
 		</LanguageContext.Provider>
 	);

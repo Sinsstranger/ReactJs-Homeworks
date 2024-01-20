@@ -1,4 +1,5 @@
 import { Container } from 'react-bootstrap';
+import PropTypes from 'prop-types';
 
 function EvalStat({ dataState, reEvalHandler }) {
 	return (
@@ -19,4 +20,12 @@ function EvalStat({ dataState, reEvalHandler }) {
 	);
 }
 
+EvalStat.propTypes = {
+	dataState: PropTypes.objectOf({
+		name: PropTypes.string,
+		evaluation: PropTypes.string,
+		comment: PropTypes.string,
+	}).isRequired,
+	reEvalHandler: PropTypes.func.isRequired,
+};
 export default EvalStat;

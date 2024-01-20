@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Container } from 'react-bootstrap';
+import axios from 'axios';
 
 class ErrorBoundary extends Component {
 	constructor(props) {
 		super(props);
 		this.state = { hasError: false };
+		this.logsUrl = `${import.meta.env.VITE_BACKEND_URL}/logs`;
 	}
 
 	static getDerivedStateFromError(error) {
@@ -14,15 +17,23 @@ class ErrorBoundary extends Component {
 
 	componentDidCatch(error, errorInfo) {
 		// Здесь можно добавить логирование ошибок, отправку отчетов и т.д.
-		console.error('Error caught by ErrorBoundary:', error, errorInfo);
+		axios.get(`${this.logsUrl}?message=${error.message}`).then((result) => {
+			if (result.data && result.data.length === 0) {
+				axios.post(this.logsUrl, {
+					message: error.message,
+					stack: errorInfo,
+					date: Date.now(),
+				});
+			}
+		});
 	}
 
 	render() {
-		const { children } = this.props;
+		const { children, fallback } = this.props;
 		const { hasError } = this.state;
 		if (hasError) {
 			// Показываем запасной UI при наличии ошибки
-			return <p>Что-то пошло не так.</p>;
+			return fallback;
 		}
 
 		// Если ошибки нет, отображаем дочерние компоненты
@@ -30,11 +41,19 @@ class ErrorBoundary extends Component {
 	}
 }
 
+ErrorBoundary.defaultProps = {
+	children: null,
+	fallback: (
+		<Container>
+			<p>Ошибка 500. Перезагрузите страницу</p>
+		</Container>
+	),
+};
 ErrorBoundary.propTypes = {
 	children: PropTypes.oneOfType([
 		PropTypes.node,
 		PropTypes.arrayOf(PropTypes.node),
-	]).isRequired,
+	]),
+	fallback: PropTypes.node,
 };
-
 export default ErrorBoundary;
