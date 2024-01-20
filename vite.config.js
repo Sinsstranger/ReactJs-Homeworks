@@ -22,6 +22,7 @@ export default defineConfig({
 			'@context': resolve(__dirname, 'src/contexts'),
 			'@routes': resolve(__dirname, 'src/routes'),
 			'@layouts': resolve(__dirname, 'src/layouts'),
+			'@hooks': resolve(__dirname, 'src/hooks'),
 		},
 	},
 	plugins: [react()],

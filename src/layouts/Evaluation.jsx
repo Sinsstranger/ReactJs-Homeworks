@@ -5,6 +5,7 @@ import { Outlet } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import { useEffect, useRef, useState } from 'react';
 import EvalStat from '@components/EvalStat.jsx';
+import useInput from '@hooks/useInput.js';
 
 const defaultEval = 5;
 const initialFormState = {
@@ -43,10 +44,10 @@ function EvaluationPage() {
 		return setIsNotReadyToSend(true);
 	}, [dataState]);
 
-	const nameInputHandler = (e) => {
+	const nameInputHandler = () => {
 		setDataState((prevState) => ({
 			...prevState,
-			name: e.target.value,
+			name: nameRef.current.value,
 		}));
 	};
 	const evalSelectHandler = (e) => {
@@ -65,11 +66,17 @@ function EvaluationPage() {
 		e.preventDefault();
 		setIsShowResult(true);
 	};
-	const reEvalHandler = (e) => {
+	const nameInput = useInput('name', dataState.name, true, 'Имя пользователя');
+	const reEvalHandler = () => {
 		setDataState(initialFormState);
 		setIsShowResult(false);
 		setIsNotReadyToSend(true);
+		nameInput.setValue(initialFormState.name);
 	};
+	useEffect(() => {
+		nameInputHandler();
+	}, [nameInput.value]);
+
 	if (isShowResult) {
 		return (
 			<>
@@ -93,14 +100,13 @@ function EvaluationPage() {
 						<label htmlFor="name">
 							Имя:&nbsp;
 							<input
-								id="name"
-								type="text"
-								name="name"
+								{
+									/* eslint-disable-next-line react/jsx-props-no-spreading */
+									...nameInput
+								}
 								ref={nameRef}
-								onSubmit={handleSubmit}
-								value={dataState.name}
-								onInput={nameInputHandler}
 							/>
+							{nameInput.error}
 						</label>
 						<label htmlFor="eval">
 							Оценка:&nbsp;
