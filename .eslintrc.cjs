@@ -16,6 +16,7 @@ module.exports = {
 		react: {version: '18.2'},
 		'import/resolver': {
 			alias: {
+				extensions: ['.js', '.ts', '.jsx', ".tsx"],
 				map: [
 					['@', './src'],
 					["@components", resolve(__dirname, "src/components")],
@@ -23,11 +24,11 @@ module.exports = {
 					["@slices", resolve(__dirname, "src/slices")],
 					["@css", resolve(__dirname, "src/css")],
 					["@context", resolve(__dirname, "src/contexts")],
+					["@reducers", resolve(__dirname, "src/reducers")],
 					["@routes", resolve(__dirname, "src/routes")],
 					["@layouts", resolve(__dirname, "src/layouts")],
 					["@hooks", resolve(__dirname, "src/hooks")],
 				],
-				extensions: ['.js', '.ts', '.jsx', ".tsx"],
 			},
 		},
 	},

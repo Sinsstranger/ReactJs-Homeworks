@@ -5,26 +5,29 @@
 			"@components/*": [
 				"components/*"
 			],
-			"@helpers/*": [
-				"helpers/*"
-			],
-			"@slices/*": [
-				"slices/*"
+			"@context/*": [
+				"contexts/*"
 			],
 			"@css/*": [
 				"css/*"
 			],
-			"@context/*": [
-				"contexts/*"
+			"@helpers/*": [
+				"helpers/*"
 			],
-			"@routes/*": [
-				"routes/*"
+			"@hooks/*": [
+				"hooks/*"
 			],
 			"@layouts/*": [
 				"layouts/*"
 			],
-			"@hooks/*": [
-				"hooks/*"
+			"@reducers/*": [
+				"reducers/*"
+			],
+			"@routes/*": [
+				"routes/*"
+			],
+			"@slices/*": [
+				"slices/*"
 			]
 		}
 	}

@@ -1,5 +1,5 @@
 import Film from '@components/Film.jsx';
-import PropTypes from 'prop-types';
+import PropTypes, { bool } from 'prop-types';
 import { useEffect, useContext, useState } from 'react';
 import LanguageContext from '@context/Lang.js';
 import getMovies from '@helpers/GetMovies.js';
@@ -7,12 +7,19 @@ import getRandomInteger from '@helpers/GetRandomInteger.js';
 import BannerMovie from '@components/BannerMovie.jsx';
 import { Container } from 'react-bootstrap';
 import { Helmet } from 'react-helmet';
+import { useDispatch, useSelector } from 'react-redux';
+import { save as filmsSave } from '@reducers/slices/FilmsSlice';
+import { save as serialsSave } from '@reducers/slices/SerialsSlice';
 
 function MoviesList({ isSerials }) {
-	const [lang] = useContext(LanguageContext);
+	const [lang, toggleLang, wasLangChanged, setWasLangChanged] =
+		useContext(LanguageContext);
 	const [isLoading, toggleLoading] = useState(true);
-	const [moviesList, setMoviesList] = useState([]);
 	const [demoMovie, setDemoMovie] = useState({});
+	const moviesList = useSelector((store) =>
+		isSerials ? store.serials.serialsList : store.films.filmsList,
+	);
+	const dispatch = useDispatch();
 	let changeBannerMovie = null;
 
 	useEffect(() => {
@@ -21,10 +28,17 @@ function MoviesList({ isSerials }) {
 		}
 		const mountMoviesList = async () => {
 			const moviesData = await getMovies(isSerials, lang);
-			setMoviesList(moviesData.results);
+			dispatch(
+				isSerials
+					? serialsSave(moviesData.results)
+					: filmsSave(moviesData.results),
+			);
 		};
-		mountMoviesList();
-	}, [lang]);
+		if (wasLangChanged || moviesList.length === 0) {
+			mountMoviesList();
+			setWasLangChanged(false);
+		}
+	}, [lang, isSerials]);
 
 	useEffect(() => {
 		changeBannerMovie = setInterval(() => {
