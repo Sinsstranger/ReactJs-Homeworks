@@ -1,9 +1,47 @@
-import { Navbar, Nav, Container } from 'react-bootstrap';
-import { NavLink } from 'react-router-dom';
+import { IoIosSearch } from 'react-icons/io';
+import { Navbar, Nav, Container, Form } from 'react-bootstrap';
+import { NavLink, Link } from 'react-router-dom';
 import LangSweatcher from '@components/LangSweatcher.jsx';
-import PropTypes from 'prop-types';
+import PropTypes, { object } from 'prop-types';
+import { useState } from 'react';
+import { useSelector } from 'react-redux';
 
 function Header({ h1 }) {
+	const [searchResults, setSearchResults] = useState([]);
+	const movies = useSelector((state) => ({
+		films: state.films.filmsList,
+		serials: state.serials.serialsList,
+	}));
+	const handleSearch = (e) => {
+		setSearchResults([]);
+		const query = e.target.value;
+		const filterMoviesByTitle = (item) => {
+			if (Object.prototype.hasOwnProperty.call(item, 'title')) {
+				return query && item?.title.includes(query);
+			}
+			return query && item?.name.includes(query);
+		};
+		const foundedFilms = movies.films.filter(filterMoviesByTitle);
+		const foundedSerials = movies.serials.filter(filterMoviesByTitle);
+		const rawCollection = [];
+
+		foundedFilms.forEach((item) =>
+			rawCollection.push(
+				<div>
+					<Link to={`/movies/${item.id}`}>{item.title}</Link>
+				</div>,
+			),
+		);
+		foundedSerials.forEach((item) =>
+			rawCollection.push(
+				<div>
+					<Link to={`/serials/${item.id}`}>{item.name}</Link>
+				</div>,
+			),
+		);
+
+		setSearchResults(rawCollection);
+	};
 	return (
 		<header className="main-header">
 			<Navbar
@@ -71,6 +109,15 @@ function Header({ h1 }) {
 							</Nav.Link>
 						</Nav>
 					</Navbar.Collapse>
+					<Form.Group className="row me-2 align-items-center">
+						<div className="col-sm-2">
+							<IoIosSearch size={24} />
+						</div>
+						<div className="col-sm-10 g-0">
+							<Form.Control onChange={handleSearch} />
+							<div className="results">{searchResults}</div>
+						</div>
+					</Form.Group>
 					<LangSweatcher />
 				</Container>
 			</Navbar>
@@ -82,6 +129,7 @@ function Header({ h1 }) {
 		</header>
 	);
 }
+
 Header.defaultProps = {
 	h1: '',
 };

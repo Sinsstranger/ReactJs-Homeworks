@@ -10,8 +10,11 @@ import { Helmet } from 'react-helmet';
 import { useDispatch, useSelector } from 'react-redux';
 import { save as filmsSave } from '@reducers/slices/FilmsSlice';
 import { save as serialsSave } from '@reducers/slices/SerialsSlice';
+import Spinner from 'react-bootstrap/Spinner';
+import { Outlet, useParams } from 'react-router-dom';
 
 function MoviesList({ isSerials }) {
+	const routeParams = useParams();
 	const [lang, toggleLang, wasLangChanged, setWasLangChanged] =
 		useContext(LanguageContext);
 	const [isLoading, toggleLoading] = useState(true);
@@ -41,13 +44,15 @@ function MoviesList({ isSerials }) {
 	}, [lang, isSerials]);
 
 	useEffect(() => {
-		changeBannerMovie = setInterval(() => {
-			if (!moviesList.length) {
-				return;
-			}
+		if (!routeParams?.movieId) {
+			changeBannerMovie = setInterval(() => {
+				if (!moviesList.length || routeParams?.movieId) {
+					return;
+				}
 
-			setDemoMovie(moviesList[getRandomInteger(0, moviesList.length)]);
-		}, 2000);
+				setDemoMovie(moviesList[getRandomInteger(0, moviesList.length)]);
+			}, 2000);
+		}
 
 		if (isLoading) {
 			toggleLoading(false);
@@ -56,7 +61,13 @@ function MoviesList({ isSerials }) {
 	}, [moviesList]);
 
 	if (isLoading) {
-		return 'Идет загрузка';
+		return (
+			<Spinner
+				animation="border"
+				role="status">
+				<span className="visually-hidden">Идет загрузка...</span>
+			</Spinner>
+		);
 	}
 	return (
 		<>
@@ -65,22 +76,30 @@ function MoviesList({ isSerials }) {
 					<Helmet>
 						<title>{isSerials ? 'Сериалы' : 'Фильмы'}</title>
 					</Helmet>
-					<BannerMovie
-						title={demoMovie?.title || demoMovie?.name}
-						overview={demoMovie?.overview}
-						changeBannerMovie={changeBannerMovie}
-					/>
+					{!routeParams?.movieId && (
+						<BannerMovie
+							title={demoMovie?.title || demoMovie?.name}
+							overview={demoMovie?.overview}
+							changeBannerMovie={changeBannerMovie}
+						/>
+					)}
 				</Container>
 			)}
 			<div className="films-list">
-				{moviesList.map((film) => (
-					<Film
-						key={`${film.id}`}
-						title={film.title || film.name}
-						overview={film.overview}
-						releaseDate={film.release_date || null}
-					/>
-				))}
+				{routeParams?.movieId ? (
+					<Outlet id={routeParams.movieId} />
+				) : (
+					moviesList.map((film) => (
+						<Film
+							key={`${film.id}`}
+							title={film.title || film.name}
+							overview={film.overview}
+							releaseDate={film.release_date || null}
+							isSerial={isSerials}
+							id={film.id}
+						/>
+					))
+				)}
 			</div>
 		</>
 	);

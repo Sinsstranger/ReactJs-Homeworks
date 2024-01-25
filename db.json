@@ -1,36 +1,4 @@
 {
   "logs": [
-    {
-      "id": "005f",
-      "message": "moviesList is undefined",
-      "stack": {
-        "componentStack": "\nError@http://localhost:5173/src/layouts/Error.jsx:16:19\nRenderErrorBoundary@http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=a21920cc:3503:5\nDataRoutes@http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=a21920cc:4649:7\nRouter@http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=a21920cc:3928:7\nRouterProvider@http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=a21920cc:4466:7\nApp@http://localhost:5173/src/App.jsx:19:37\nProvider@http://localhost:5173/node_modules/.vite/deps/react-redux.js?v=791085c5:1092:18\nErrorBoundary@http://localhost:5173/src/components/ErrorBoundary.jsx:37:9"
-      },
-      "date": 1706025908616
-    },
-    {
-      "id": "72a0",
-      "message": "store.Serials is undefined",
-      "stack": {
-        "componentStack": "\nError@http://localhost:5173/src/layouts/Error.jsx:16:19\nRenderErrorBoundary@http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=a21920cc:3503:5\nDataRoutes@http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=a21920cc:4649:7\nRouter@http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=a21920cc:3928:7\nRouterProvider@http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=a21920cc:4466:7\nApp@http://localhost:5173/src/App.jsx?t=1706025950606:19:37\nProvider@http://localhost:5173/node_modules/.vite/deps/react-redux.js?v=791085c5:1092:18\nErrorBoundary@http://localhost:5173/src/components/ErrorBoundary.jsx:37:9"
-      },
-      "date": 1706025955176
-    },
-    {
-      "id": "d906",
-      "message": "setWasLangChanged is not a function",
-      "stack": {
-        "componentStack": "\nError@http://localhost:5173/src/layouts/Error.jsx:16:19\nRenderErrorBoundary@http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=a21920cc:3503:5\nDataRoutes@http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=a21920cc:4649:7\nRouter@http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=a21920cc:3928:7\nRouterProvider@http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=a21920cc:4466:7\nApp@http://localhost:5173/src/App.jsx?t=1706027312053:19:37\nProvider@http://localhost:5173/node_modules/.vite/deps/react-redux.js?v=791085c5:1092:18\nErrorBoundary@http://localhost:5173/src/components/ErrorBoundary.jsx:37:9"
-      },
-      "date": 1706027385452
-    },
-    {
-      "id": "2521",
-      "message": "useContext(...) is not iterable",
-      "stack": {
-        "componentStack": "\nError@http://localhost:5173/src/layouts/Error.jsx:16:19\nRenderErrorBoundary@http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=621f1e9b:3503:5\nDataRoutes@http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=621f1e9b:4649:7\nRouter@http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=621f1e9b:3928:7\nRouterProvider@http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=621f1e9b:4466:7\nApp@http://localhost:5173/src/App.jsx?t=1706027857517:19:37\nProvider@http://localhost:5173/node_modules/.vite/deps/react-redux.js?v=621f1e9b:1092:18\nErrorBoundary@http://localhost:5173/src/components/ErrorBoundary.jsx:37:9"
-      },
-      "date": 1706027861851
-    }
   ]
 }

@@ -97,33 +97,38 @@ function EvaluationPage() {
 						action="/evaluate"
 						className="eval-form"
 						onSubmit={handleSubmit}>
-						<label htmlFor="name">
-							Имя:&nbsp;
-							<input
+						<Form.Group>
+							<Form.Label htmlFor="name">Имя:</Form.Label>
+							<Form.Control
 								{...nameInput}
 								ref={nameRef}
 							/>
 							{nameInput.error}
-						</label>
-						<label htmlFor="eval">
-							Оценка:&nbsp;
-							<select
+						</Form.Group>
+						<Form.Group>
+							<Form.Label htmlFor="eval">Оценка:&nbsp;</Form.Label>
+							<Form.Select
 								name="eval"
 								id="eval"
 								ref={evalRef}
 								value={dataState.evaluation}
 								onChange={evalSelectHandler}>
-								<option value={1}>1</option>
-								<option value={2}>2</option>
-								<option value={3}>3</option>
-								<option value={4}>4</option>
-								<option value={defaultEval}>{defaultEval}</option>
-							</select>
-						</label>
-						<label htmlFor="comment">
-							Сообщение
-							<br />
-							<textarea
+								{Array.from({ length: defaultEval }, (_, idx) => idx + 1)
+									.fill(null)
+									.map((item, idx) => (
+										<option
+											selected={idx === defaultEval}
+											key={`option_${idx}#`}
+											value={idx + 1}>
+											{idx + 1}
+										</option>
+									))}
+							</Form.Select>
+						</Form.Group>
+						<Form.Group>
+							<Form.Label htmlFor="comment">Сообщение</Form.Label>
+							<Form.Control
+								as="textarea"
 								name="comment"
 								id="comment"
 								cols="30"
@@ -132,7 +137,7 @@ function EvaluationPage() {
 								onInput={commentInputHandler}
 								value={dataState.comment}
 							/>
-						</label>
+						</Form.Group>
 						<input
 							type="submit"
 							value="Отправить форму"

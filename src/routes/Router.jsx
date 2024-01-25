@@ -4,7 +4,12 @@ import Error from '@layouts/Error.jsx';
 import MoviesList from '@components/MoviesList.jsx';
 import { Helmet } from 'react-helmet';
 import EvaluationPage from '@layouts/Evaluation.jsx';
+import MovieDetail from '@components/MovieDetail.jsx';
 
+const movieDetail = {
+	path: ':movieId',
+	element: <MovieDetail />,
+};
 const router = createBrowserRouter([
 	{
 		path: '/',
@@ -25,10 +30,12 @@ const router = createBrowserRouter([
 			{
 				path: 'movies',
 				element: <MoviesList />,
+				children: [movieDetail],
 			},
 			{
 				path: 'serials',
 				element: <MoviesList isSerials />,
+				children: [movieDetail],
 			},
 			{ path: '*', element: <Error /> },
 		],
