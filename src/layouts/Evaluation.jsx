@@ -67,6 +67,7 @@ function EvaluationPage() {
 		setIsShowResult(true);
 	};
 	const nameInput = useInput('name', dataState.name, true, 'Имя пользователя');
+	const { setValue, ...filteredNameInput } = nameInput;
 	const reEvalHandler = () => {
 		setDataState(initialFormState);
 		setIsShowResult(false);
@@ -100,7 +101,7 @@ function EvaluationPage() {
 						<Form.Group>
 							<Form.Label htmlFor="name">Имя:</Form.Label>
 							<Form.Control
-								{...nameInput}
+								{...filteredNameInput}
 								ref={nameRef}
 							/>
 							{nameInput.error}
@@ -117,7 +118,6 @@ function EvaluationPage() {
 									.fill(null)
 									.map((item, idx) => (
 										<option
-											selected={idx === defaultEval}
 											key={`option_${idx}#`}
 											value={idx + 1}>
 											{idx + 1}

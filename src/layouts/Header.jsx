@@ -2,7 +2,7 @@ import { IoIosSearch } from 'react-icons/io';
 import { Navbar, Nav, Container, Form } from 'react-bootstrap';
 import { NavLink, Link } from 'react-router-dom';
 import LangSweatcher from '@components/LangSweatcher.jsx';
-import PropTypes, { object } from 'prop-types';
+import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 
@@ -28,14 +28,22 @@ function Header({ h1 }) {
 		foundedFilms.forEach((item) =>
 			rawCollection.push(
 				<div>
-					<Link to={`/movies/${item.id}`}>{item.title}</Link>
+					<Link
+						key={item.id}
+						to={`/movies/${item.id}`}>
+						{item.title}
+					</Link>
 				</div>,
 			),
 		);
 		foundedSerials.forEach((item) =>
 			rawCollection.push(
 				<div>
-					<Link to={`/serials/${item.id}`}>{item.name}</Link>
+					<Link
+						key={item.id}
+						to={`/serials/${item.id}`}>
+						{item.name}
+					</Link>
 				</div>,
 			),
 		);
