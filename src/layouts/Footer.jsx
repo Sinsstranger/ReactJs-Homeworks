@@ -1,10 +1,6 @@
+import React from 'react';
+
 function Footer() {
-	return (
-		<div
-			data-bs-theme="dark"
-			className="footer">
-			&copy; Все права защищены
-		</div>
-	);
+	return <div className="footer bg-dark">&copy; Все права защищены</div>;
 }
 export default Footer;

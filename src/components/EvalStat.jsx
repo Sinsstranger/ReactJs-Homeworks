@@ -1,5 +1,6 @@
 import { Container } from 'react-bootstrap';
 import PropTypes from 'prop-types';
+import React from 'react';
 
 function EvalStat({ dataState, reEvalHandler }) {
 	return (

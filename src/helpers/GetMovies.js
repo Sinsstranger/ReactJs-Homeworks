@@ -1,4 +1,4 @@
-import { supportedLanguages } from '@context/Lang.js';
+import { supportedLanguages } from '@context/Lang';
 
 const getMovies = async (isSerials = false, lang = 'ru') => {
 	const srcUrl = `${import.meta.env.VITE_API_BASE_URL}${

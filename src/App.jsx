@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useState } from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
 import LanguageContext, { supportedLanguages } from '@context/Lang.js';
 import { RouterProvider } from 'react-router-dom';
 import router from '@routes/Router';

@@ -1,6 +1,6 @@
 import Film from '@components/Film.jsx';
 import PropTypes from 'prop-types';
-import { useEffect, useContext, useState } from 'react';
+import React, { useEffect, useContext, useState } from 'react';
 import LanguageContext from '@context/Lang.js';
 import getMovies from '@helpers/GetMovies.js';
 import getRandomInteger from '@helpers/GetRandomInteger.js';

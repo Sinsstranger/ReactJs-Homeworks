@@ -1,8 +1,12 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react-swc';
 import { resolve } from 'path';
+import { nodePolyfills } from 'vite-plugin-node-polyfills';
 // https://vitejs.dev/config/
 export default defineConfig({
+	build: {
+		sourcemap: true,
+	},
 	server: {
 		hmr: {
 			overlay: true, // Отображение уведомлений об ошибках поверх приложения
@@ -21,10 +25,11 @@ export default defineConfig({
 			'@helpers': resolve(__dirname, 'src/helpers'),
 			'@hooks': resolve(__dirname, 'src/hooks'),
 			'@layouts': resolve(__dirname, 'src/layouts'),
+			'@middlewares': resolve(__dirname, 'src/middlewares'),
 			'@reducers': resolve(__dirname, 'src/reducers'),
 			'@routes': resolve(__dirname, 'src/routes'),
 			'@slices': resolve(__dirname, 'src/reducers/slices'),
 		},
 	},
-	plugins: [react()],
+	plugins: [react(), nodePolyfills()],
 });

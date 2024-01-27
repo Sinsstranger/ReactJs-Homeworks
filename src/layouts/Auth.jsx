@@ -1,15 +1,15 @@
-import { Container } from 'react-bootstrap';
-import Header from '@layouts/Header.jsx';
-import Footer from '@layouts/Footer.jsx';
-import { Outlet } from 'react-router-dom';
 import React from 'react';
+import Header from '@layouts/Header';
+import { Container } from 'react-bootstrap';
+import { Outlet } from 'react-router-dom';
+import Footer from '@layouts/Footer';
 
-function MainPage() {
+function Auth() {
 	return (
 		<>
 			<Header />
 			<main className="main">
-				<Container>
+				<Container className="h-100">
 					<Outlet />
 				</Container>
 			</main>
@@ -17,5 +17,4 @@ function MainPage() {
 		</>
 	);
 }
-
-export default MainPage;
+export default Auth;

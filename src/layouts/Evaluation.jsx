@@ -3,7 +3,7 @@ import Header from '@layouts/Header.jsx';
 import Footer from '@layouts/Footer.jsx';
 import { Outlet } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
-import { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import EvalStat from '@components/EvalStat.jsx';
 import useInput from '@hooks/useInput.js';
 

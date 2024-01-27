@@ -1,4 +1,4 @@
-import { supportedLanguages } from '@context/Lang.js';
+import { supportedLanguages } from '@context/Lang';
 
 const getMovie = async (lang, movieId, isSerials) => {
 	const srcUrl = 'https://api.themoviedb.org/3/movie/';

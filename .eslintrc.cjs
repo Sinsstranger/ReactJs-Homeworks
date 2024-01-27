@@ -24,6 +24,7 @@ module.exports = {
 					["@slices", resolve(__dirname, "src/slices")],
 					["@css", resolve(__dirname, "src/css")],
 					["@context", resolve(__dirname, "src/contexts")],
+					["@middlewares", resolve(__dirname, "src/middlewares")],
 					["@reducers", resolve(__dirname, "src/reducers")],
 					["@routes", resolve(__dirname, "src/routes")],
 					["@layouts", resolve(__dirname, "src/layouts")],
@@ -44,5 +45,6 @@ module.exports = {
 		"react/jsx-uses-react": "error",
 		"react/jsx-uses-vars": "error",
 		"react/jsx-props-no-spreading": "off",
+		'no-param-reassign': ['error', { props: false }]
 	},
 }

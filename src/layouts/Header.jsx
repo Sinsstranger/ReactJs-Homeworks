@@ -3,15 +3,13 @@ import { Navbar, Nav, Container, Form } from 'react-bootstrap';
 import { NavLink, Link } from 'react-router-dom';
 import LangSweatcher from '@components/LangSweatcher.jsx';
 import PropTypes from 'prop-types';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 
 function Header({ h1 }) {
 	const [searchResults, setSearchResults] = useState([]);
-	const movies = useSelector((state) => ({
-		films: state.films.filmsList,
-		serials: state.serials.serialsList,
-	}));
+	const movies = useSelector((state) => state.films.filmsList);
+	const serials = useSelector((state) => state.serials.serialsList);
 	const handleSearch = (e) => {
 		setSearchResults([]);
 		const query = e.target.value;
@@ -22,7 +20,7 @@ function Header({ h1 }) {
 			return query && item?.name.includes(query);
 		};
 		const foundedFilms = movies.films.filter(filterMoviesByTitle);
-		const foundedSerials = movies.serials.filter(filterMoviesByTitle);
+		const foundedSerials = serials.serials.filter(filterMoviesByTitle);
 		const rawCollection = [];
 
 		foundedFilms.forEach((item) =>

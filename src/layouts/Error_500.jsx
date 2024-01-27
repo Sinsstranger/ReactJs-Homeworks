@@ -1,5 +1,6 @@
 import { Container } from 'react-bootstrap';
 import { Helmet } from 'react-helmet';
+import React from 'react';
 
 function Error500() {
 	return (
