@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import LanguageContext from '@context/Lang.js';
 
-function LangSweatcher() {
+function LangSwitcher() {
 	const [lang, toggleLang] = useContext(LanguageContext);
 	return (
 		<button
@@ -11,4 +11,4 @@ function LangSweatcher() {
 		</button>
 	);
 }
-export default LangSweatcher;
+export default LangSwitcher;
