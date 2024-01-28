@@ -140,7 +140,6 @@ function Header({ h1 }) {
 						<Button
 							type="button"
 							className="mx-2"
-							{/*//FIXME не происходит перерисовки*/}
 							onClick={() => dispatch(logout())}>
 							Выход
 						</Button>
