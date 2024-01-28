@@ -1,11 +1,28 @@
+/* eslint-disable lines-between-class-members,class-methods-use-this */
+import bcrypt from 'bcryptjs';
+
 class AuthHelper {
 	static isAuth = 'isAuth';
 
 	static token = 'token';
 
 	constructor() {
-		this.isAuth = false;
-		this.token = null;
+		this.isAuth = sessionStorage.getItem(AuthHelper.isAuth) || false;
+		this.token = sessionStorage.getItem(AuthHelper.token) || null;
+	}
+	#genSalt(rounds = 10) {
+		return bcrypt.genSaltSync(rounds);
+	}
+
+	genPasswordHash(password) {
+		if (!password || typeof password !== 'string') {
+			throw new Error('Cannot gen password hash without password string');
+		}
+		return bcrypt.hashSync(password, this.#genSalt());
+	}
+
+	checkPassword(password, hashedPassword) {
+		return bcrypt.compareSync(password, hashedPassword);
 	}
 
 	getToken() {
@@ -14,6 +31,7 @@ class AuthHelper {
 
 	setToken(token) {
 		this[AuthHelper.token] = token;
+		this.save();
 	}
 
 	getIsAuth() {
@@ -22,6 +40,7 @@ class AuthHelper {
 
 	setIsAuth(isAuth) {
 		this[AuthHelper.isAuth] = isAuth || false;
+		this.save();
 	}
 
 	save() {

@@ -1,15 +1,19 @@
 import { IoIosSearch } from 'react-icons/io';
-import { Navbar, Nav, Container, Form } from 'react-bootstrap';
+import { Navbar, Nav, Container, Form, Button } from 'react-bootstrap';
 import { NavLink, Link } from 'react-router-dom';
 import LangSweatcher from '@components/LangSweatcher.jsx';
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { logout } from '@reducers/slices/UserSlice';
 
 function Header({ h1 }) {
 	const [searchResults, setSearchResults] = useState([]);
 	const movies = useSelector((state) => state.films.filmsList);
 	const serials = useSelector((state) => state.serials.serialsList);
+	const isAuth = useSelector((state) => state.user.isAuth);
+	const dispatch = useDispatch();
+
 	const handleSearch = (e) => {
 		setSearchResults([]);
 		const query = e.target.value;
@@ -125,6 +129,22 @@ function Header({ h1 }) {
 						</div>
 					</Form.Group>
 					<LangSweatcher />
+					{!isAuth ? (
+						<Button
+							type="button"
+							as={Link}
+							to="/auth">
+							Войти
+						</Button>
+					) : (
+						<Button
+							type="button"
+							className="mx-2"
+							{/*//FIXME не происходит перерисовки*/}
+							onClick={() => dispatch(logout())}>
+							Выход
+						</Button>
+					)}
 				</Container>
 			</Navbar>
 			{h1 && (
