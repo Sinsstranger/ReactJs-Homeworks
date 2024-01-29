@@ -26,20 +26,20 @@ class AuthHelper {
 	}
 
 	getToken() {
-		return this[AuthHelper.token] || null;
+		return this.token || null;
 	}
 
 	setToken(token) {
-		this[AuthHelper.token] = token;
+		this.token = token;
 		this.save();
 	}
 
 	getIsAuth() {
-		return this[AuthHelper.isAuth] || false;
+		return this.isAuth || false;
 	}
 
 	setIsAuth(isAuth) {
-		this[AuthHelper.isAuth] = isAuth || false;
+		this.isAuth = isAuth || false;
 		this.save();
 	}
 
@@ -55,7 +55,7 @@ class AuthHelper {
 			this[AuthHelper.isAuth] = false;
 			this[AuthHelper.token] = null;
 			sessionStorage.removeItem(AuthHelper.isAuth);
-			sessionStorage.removeItem(AuthHelper.isAuth);
+			sessionStorage.removeItem(AuthHelper.token);
 			return true;
 		} catch (e) {
 			return false;

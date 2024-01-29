@@ -1,7 +1,7 @@
 import { IoIosSearch } from 'react-icons/io';
 import { Navbar, Nav, Container, Form, Button } from 'react-bootstrap';
 import { NavLink, Link } from 'react-router-dom';
-import LangSweatcher from '@components/LangSweatcher.jsx';
+import LangSwitcher from '@components/LangSwitcher';
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -128,7 +128,7 @@ function Header({ h1 }) {
 							<div className="results">{searchResults}</div>
 						</div>
 					</Form.Group>
-					<LangSweatcher />
+					<LangSwitcher />
 					{!isAuth ? (
 						<Button
 							type="button"

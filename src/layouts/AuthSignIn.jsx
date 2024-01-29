@@ -26,9 +26,7 @@ function AuthSignIn() {
 			setErrorMessage('Не верный логин и/или пароль');
 			return false;
 		}
-		// FIXME: Тут проблема [Warning: Cannot update a component (`RouterProvider`) while rendering a different component (`AuthSignIn`). To locate the bad setState() call inside `AuthSignIn`, follow the stack trace as described in https://reactjs.org/link/setstate-in-render]
 		dispatch(login(users[0].passwordHash));
-		// FIXME: Не происходит перенаправления после авторизации
 		navigate('/');
 	};
 	return (
