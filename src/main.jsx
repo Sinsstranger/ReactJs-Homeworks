@@ -4,6 +4,7 @@ import ErrorBoundary from '@components/ErrorBoundary';
 import Error500 from '@layouts/Error_500.jsx';
 import { Provider as ReduxProvider } from 'react-redux';
 import store from './store';
+import './i18n';
 import App from './App';
 
 ReactDOM.createRoot(document.getElementById('root')).render(

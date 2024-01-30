@@ -11,6 +11,7 @@ import { Button } from 'react-bootstrap';
 import ErrorBoundary from '@components/ErrorBoundary';
 import AuthSignIn from '@layouts/AuthSignIn';
 import AuthSignUp from '@layouts/AuthSignUp';
+import Index from '@components/Index.jsx';
 
 const movieDetail = {
 	path: ':movieId',
@@ -24,14 +25,7 @@ const router = createBrowserRouter([
 		children: [
 			{
 				index: true,
-				element: (
-					<>
-						<Helmet>
-							<title>Главная страница</title>
-						</Helmet>
-						<h1 className="card-title">Главная страница</h1>
-					</>
-				),
+				element: <Index />,
 			},
 			{
 				path: 'movies',
@@ -54,20 +48,20 @@ const router = createBrowserRouter([
 			{
 				index: true,
 				element: (
-					<div className="h-100 d-flex align-items-center justify-content-center">
-						<Button
-							className="mx-2"
-							as={Link}
-							to="/auth/signin">
-							Login
-						</Button>
-						<Button
-							className="mx-2"
-							as={Link}
-							to="/auth/signup">
-							SignUp
-						</Button>
-					</div>
+								<div className="h-100 d-flex align-items-center justify-content-center">
+									<Button
+													className="mx-2"
+													as={Link}
+													to="/auth/signin">
+										Login
+									</Button>
+									<Button
+													className="mx-2"
+													as={Link}
+													to="/auth/signup">
+										SignUp
+									</Button>
+								</div>
 				),
 			},
 			{ path: 'signin', element: <AuthSignIn /> },

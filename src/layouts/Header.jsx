@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '@reducers/slices/UserSlice';
+import { useTranslation } from 'react-i18next';
 
 function Header({ h1 }) {
 	const [searchResults, setSearchResults] = useState([]);
