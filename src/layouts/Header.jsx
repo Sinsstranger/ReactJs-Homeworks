@@ -3,7 +3,7 @@ import { Navbar, Nav, Container, Form, Button } from 'react-bootstrap';
 import { NavLink, Link } from 'react-router-dom';
 import LangSwitcher from '@components/LangSwitcher';
 import PropTypes from 'prop-types';
-import React, { useState } from 'react';
+import React, { useState, memo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '@reducers/slices/UserSlice';
 import { useTranslation } from 'react-i18next';
@@ -163,4 +163,4 @@ Header.propTypes = {
 	h1: PropTypes.string,
 };
 
-export default Header;
+export default memo(Header);

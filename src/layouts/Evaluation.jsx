@@ -3,7 +3,7 @@ import Header from '@layouts/Header.jsx';
 import Footer from '@layouts/Footer.jsx';
 import { Outlet } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, memo, useCallback } from 'react';
 import EvalStat from '@components/EvalStat.jsx';
 import useInput from '@hooks/useInput.js';
 
@@ -44,28 +44,28 @@ function EvaluationPage() {
 		return setIsNotReadyToSend(true);
 	}, [dataState]);
 
-	const nameInputHandler = () => {
-		setDataState((prevState) => ({
-			...prevState,
-			name: nameRef.current.value,
-		}));
-	};
-	const evalSelectHandler = (e) => {
-		setDataState((prevState) => ({
-			...prevState,
-			evaluation: e.target.value,
-		}));
-	};
-	const commentInputHandler = (e) => {
-		setDataState((prevState) => ({
-			...prevState,
-			comment: e.target.value,
-		}));
-	};
-	const handleSubmit = (e) => {
-		e.preventDefault();
-		setIsShowResult(true);
-	};
+	const nameInputHandler = useCallback(() => {
+    setDataState((prevState) => ({
+      ...prevState,
+      name: nameRef.current.value,
+    }));
+  }, []);
+	const evalSelectHandler = useCallback((e) => {
+    setDataState((prevState) => ({
+      ...prevState,
+      evaluation: e.target.value,
+    }));
+  }, []);
+	const commentInputHandler = useCallback((e) => {
+    setDataState((prevState) => ({
+      ...prevState,
+      comment: e.target.value,
+    }));
+  },[]);
+	const handleSubmit = useCallback((e) => {
+    e.preventDefault();
+    setIsShowResult(true);
+  }, []);
 	const nameInput = useInput('name', dataState.name, true, 'Имя пользователя');
 	const { setValue, ...filteredNameInput } = nameInput;
 	const reEvalHandler = () => {
@@ -152,4 +152,4 @@ function EvaluationPage() {
 	);
 }
 
-export default EvaluationPage;
+export default memo(EvaluationPage);

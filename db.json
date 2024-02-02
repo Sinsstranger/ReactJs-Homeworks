@@ -15,6 +15,30 @@
         "componentStack": "\nApp@http://localhost:5173/src/App.jsx?t=1706642726011:23:37\nProvider@http://localhost:5173/node_modules/.vite/deps/react-redux.js?v=768e9b01:1166:18\nErrorBoundary@http://localhost:5173/src/components/ErrorBoundary.jsx:38:9"
       },
       "date": 1706642729405
+    },
+    {
+      "id": "6bbb",
+      "message": "React is not defined",
+      "stack": {
+        "componentStack": "\nError@http://localhost:5173/src/layouts/Error.jsx:21:19\nRenderErrorBoundary@http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=b9cec967:3517:5\nDataRoutes@http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=b9cec967:4663:7\nRouter@http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=b9cec967:3942:7\nRouterProvider@http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=b9cec967:4480:7\nApp@http://localhost:5173/src/App.jsx:24:37\nProvider@http://localhost:5173/node_modules/.vite/deps/react-redux.js?v=9dd2c330:1166:18\nErrorBoundary@http://localhost:5173/src/components/ErrorBoundary.jsx:38:9"
+      },
+      "date": 1706897410923
+    },
+    {
+      "id": "33a9",
+      "message": "Objects are not valid as a React child (found: object with keys {$$typeof, type, compare}). If you meant to render a collection of children, use an array instead.",
+      "stack": {
+        "componentStack": "\n    at Error (http://localhost:5173/src/layouts/Error.jsx:21:19)\n    at RenderErrorBoundary (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=b9cec967:3517:5)\n    at DataRoutes (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=b9cec967:4660:5)\n    at Router (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=b9cec967:3935:15)\n    at RouterProvider (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=b9cec967:4477:5)\n    at App (http://localhost:5173/src/App.jsx?t=1706897776823:24:29)\n    at Provider (http://localhost:5173/node_modules/.vite/deps/react-redux.js?v=9dd2c330:1167:3)\n    at ErrorBoundary (http://localhost:5173/src/components/ErrorBoundary.jsx:38:9)"
+      },
+      "date": 1706898022992
+    },
+    {
+      "id": "cb21",
+      "message": "filmsList is not defined",
+      "stack": {
+        "componentStack": "\n    at Error (http://localhost:5173/src/layouts/Error.jsx:21:19)\n    at RenderErrorBoundary (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=b9cec967:3517:5)\n    at DataRoutes (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=b9cec967:4660:5)\n    at Router (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=b9cec967:3935:15)\n    at RouterProvider (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=b9cec967:4477:5)\n    at App (http://localhost:5173/src/App.jsx?t=1706898113882:24:29)\n    at Provider (http://localhost:5173/node_modules/.vite/deps/react-redux.js?v=9dd2c330:1167:3)\n    at ErrorBoundary (http://localhost:5173/src/components/ErrorBoundary.jsx:38:9)"
+      },
+      "date": 1706898720964
     }
   ],
   "users": []

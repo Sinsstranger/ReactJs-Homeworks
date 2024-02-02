@@ -1,6 +1,6 @@
-import React from 'react';
+import React, {memo} from 'react';
 
 function Footer() {
 	return <div className="footer bg-dark">&copy; Все права защищены</div>;
 }
-export default Footer;
+export default memo(Footer);
